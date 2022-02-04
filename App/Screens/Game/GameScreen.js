@@ -44,7 +44,7 @@ class GameScreen extends React.Component {
       matrixBorder: 0,
       shapeBorder: 0,
       shapesInfo: [],
-      frozen: false,
+      frozen: true,
       isPowerOn: false,
       powerUpId: null,
       powerupTime: false,
@@ -376,14 +376,14 @@ class GameScreen extends React.Component {
     let counter = -1
 
     const newShapesInfo = shapesInMatrix.map((shape, i) => {
-      const row = i % 5
-      if (row === 0) {
+      const column = i % 5
+      if (column === 0) {
         counter += 1
       }
 
         return (
           { 
-            x: x + (row * width), 
+            x: x + (column * width), 
             y: y + (counter * height), 
             height,
             width,
@@ -404,10 +404,10 @@ class GameScreen extends React.Component {
     this.setState({ powerUpId: e })
   }
 
-  renderShape = ( shape, i, hidden ) => {
+  renderShape = ( shape, i, isHidden = false ) => {
     const { shapesFound } = this.props;
-    const found = shapesFound.find(id => id == shape.id);
-    if (!found && !hidden) {
+    const isFound = shapesFound.find(id => id == shape.id);
+    if (!isFound && !isHidden) {
       return (
         <View
           {...this._panResponder.panHandlers}
@@ -417,25 +417,25 @@ class GameScreen extends React.Component {
           <Image 
             key={`${shape.name}${i}`} 
             style={style.shapeImg} 
-            source={!hidden ? shape.activeImg : shape.inactiveImg} 
+            source={!isHidden ? shape.activeImg : shape.inactiveImg} 
             shape={shape}
             resizeMode="contain"
           />
         </View>
       )
     }
-    if (hidden) { 
+    if (isHidden) { 
       return (
         <Image 
           key={`${shape.name}${i}`} 
           style={[style.shapeImg]} 
-          source={!hidden || found ? shape.activeImg : shape.inactiveImg} 
+          source={!isHidden || isFound ? shape.activeImg : shape.inactiveImg} 
           shape={shape}
           resizeMode="contain"
         />
       )
     }
-    if (found) {
+    if (isFound) {
       return null;
     }
   }
@@ -489,7 +489,7 @@ class GameScreen extends React.Component {
           score={score}
           level={level}
           timeID={timeID}
-          isFrozen={frozen}
+          isFrozen={true}
           isAddTime={addTime}
           gamePaused={gamePaused}
           showPowerupTime={powerupTime}

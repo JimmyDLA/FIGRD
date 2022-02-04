@@ -14,9 +14,6 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		180E8F10109AAC0F6C4AE8A5 /* libPods-FIGRD-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46C2C6D1905A57358D15545F /* libPods-FIGRD-tvOS.a */; };
 		2009FA3E25394E9100711904 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2009FA3D25394E9100711904 /* LaunchScreen.storyboard */; };
-		2088EFBA2522E5190002B700 /* dub.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2088EFB92522E5190002B700 /* dub.mp3 */; };
-		2088F0002522FC480002B700 /* main_track.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2088EFFF2522FC470002B700 /* main_track.mp3 */; };
-		2088F00625230EF70002B700 /* snips.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2088F00525230EF70002B700 /* snips.mp3 */; };
 		298566B4182437FDC9416AAA /* libPods-FIGRD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDD0398590D8F93705C82ABE /* libPods-FIGRD.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -25,6 +22,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* FIGRDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* FIGRDTests.m */; };
 		4DAB87E83FB0F8E413EA3C28 /* libPods-FIGRD-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 262FB68990FABB4B74A57DD9 /* libPods-FIGRD-tvOSTests.a */; };
 		63C37E8B2AC542F6BC4A8877 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB604BAD56CE40729982F1CB /* libRNGestureHandler-tvOS.a */; };
+		7BF02EC027ACF184002B9E70 /* main_track.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BF02EBE27ACF184002B9E70 /* main_track.mp3 */; };
+		7BF02EC127ACF184002B9E70 /* snips.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7BF02EBF27ACF184002B9E70 /* snips.mp3 */; };
 		9B5170A1E2968F671F086D1D /* libPods-FIGRDTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5329D520C5178EF1D2E66068 /* libPods-FIGRDTests.a */; };
 		BEDAA4C29F2A455594DDC00A /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ECFD547ABDD40A8941F8AC8 /* libRNGestureHandler.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
@@ -62,9 +61,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FIGRD/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FIGRD/main.m; sourceTree = "<group>"; };
 		2009FA3D25394E9100711904 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2088EFB92522E5190002B700 /* dub.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dub.mp3; path = ../../../Downloads/dub.mp3; sourceTree = "<group>"; };
-		2088EFFF2522FC470002B700 /* main_track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = main_track.mp3; path = ../../../Desktop/main_track.mp3; sourceTree = "<group>"; };
-		2088F00525230EF70002B700 /* snips.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = snips.mp3; path = ../../../Desktop/snips.mp3; sourceTree = "<group>"; };
 		262FB68990FABB4B74A57DD9 /* libPods-FIGRD-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FIGRD-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* FIGRD-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FIGRD-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* FIGRD-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FIGRD-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +72,8 @@
 		5C3EFA04EABA7989E628AC64 /* Pods-FIGRD-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIGRD-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FIGRD-tvOSTests/Pods-FIGRD-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		75E936EB1A3002F6A9AB4156 /* Pods-FIGRD.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIGRD.release.xcconfig"; path = "Target Support Files/Pods-FIGRD/Pods-FIGRD.release.xcconfig"; sourceTree = "<group>"; };
 		764AD50AC6F939E0A1C08B00 /* Pods-FIGRDTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIGRDTests.debug.xcconfig"; path = "Target Support Files/Pods-FIGRDTests/Pods-FIGRDTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7BF02EBE27ACF184002B9E70 /* main_track.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = main_track.mp3; path = ../../../Downloads/main_track.mp3; sourceTree = "<group>"; };
+		7BF02EBF27ACF184002B9E70 /* snips.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = snips.mp3; path = ../../../Downloads/snips.mp3; sourceTree = "<group>"; };
 		7ECFD547ABDD40A8941F8AC8 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		B47D75E5D1913E2479AB2B8D /* Pods-FIGRD.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIGRD.debug.xcconfig"; path = "Target Support Files/Pods-FIGRD/Pods-FIGRD.debug.xcconfig"; sourceTree = "<group>"; };
 		EB604BAD56CE40729982F1CB /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
@@ -206,9 +204,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				2088F00525230EF70002B700 /* snips.mp3 */,
-				2088EFFF2522FC470002B700 /* main_track.mp3 */,
-				2088EFB92522E5190002B700 /* dub.mp3 */,
+				7BF02EBE27ACF184002B9E70 /* main_track.mp3 */,
+				7BF02EBF27ACF184002B9E70 /* snips.mp3 */,
 				13B07FAE1A68108700A75B9A /* FIGRD */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* FIGRDTests */,
@@ -376,12 +373,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2088EFBA2522E5190002B700 /* dub.mp3 in Resources */,
-				2088F0002522FC480002B700 /* main_track.mp3 in Resources */,
+				7BF02EC027ACF184002B9E70 /* main_track.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				7BF02EC127ACF184002B9E70 /* snips.mp3 in Resources */,
 				2009FA3E25394E9100711904 /* LaunchScreen.storyboard in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				2088F00625230EF70002B700 /* snips.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
