@@ -1,6 +1,14 @@
 import { StyleSheet, Platform } from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
+export const colorObj = {
+  red: 'rgb(235, 77, 75)',
+  green: 'rgb(186, 220, 88)',
+  blue: 'rgb(116, 185, 255)',
+  orange: 'rgb(255, 190, 118)',
+  purple: 'rgb(162, 155, 254)',
+  gold: 'rgb(255,223,0)',
+}
 
 export const style = StyleSheet.create({
   container: { 
@@ -14,14 +22,17 @@ export const style = StyleSheet.create({
     width: '100%',
     borderWidth: hp(0.5),
     borderColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   innerMatrix: {
-    height: '100%', 
-    width: '100%', 
+    height: '75%', 
+    width: '75%', 
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    alignItems: 'center',
+    justifyContent: 'center',
+    alignContent: 'center',
+    backgroundColor: 'pink'
   },
   selectionContainer: { 
     height: '42%',

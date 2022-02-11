@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import CountDown from 'react-native-countdown-component';
 import pauseImg from 'App/Assets/Images/pause.png'
-import { style } from 'App/Screens/Game/GameScreen.style';
+import { style, colorObj } from 'App/Screens/Game/GameScreen.style';
 
 export const Status = React.forwardRef((props, ref) => {
   const {
@@ -15,11 +15,12 @@ export const Status = React.forwardRef((props, ref) => {
     handleGameOver,
     isFrozen,
     isAddTime,
-    showPowerupTime
+    showPowerupTime,
+    saveOffsetY,
   } = props;
   
   return(
-    <View style={style.statsContainer}>
+    <View style={style.statsContainer} onLayout={saveOffsetY}>
 
       <View style={style.column0}>
         <View style={style.subContainer}>
@@ -40,15 +41,15 @@ export const Status = React.forwardRef((props, ref) => {
           onFinish={handleGameOver}
           size={25}
           digitStyle={{backgroundColor: 'transparent', width: 40}}
-          digitTxtStyle={{ color: isFrozen ? 'rgb(65,105,225)' : 'rgb(0,0,0)' }}
-          separatorStyle={{ color: isFrozen ? 'rgb(65,105,225)' : 'rgb(0,0,0)' }}
+          digitTxtStyle={{ color: isFrozen ? colorObj.blue : 'rgb(0,0,0)' }}
+          separatorStyle={{ color: isFrozen ? colorObj.blue : 'rgb(0,0,0)' }}
           timeToShow={['M','S']}
           timeLabels={{}}
           showSeparator
           running={!gamePaused && !isFrozen }
         />
         {showPowerupTime && (
-          <Text style={[style.timeIndicator, {color: isAddTime ? 'rgb(0,100,0)' : 'rgb(220,20,60)' }]}>
+          <Text style={[style.timeIndicator, {color: isAddTime ? colorObj.green : colorObj.red }]}>
             {isAddTime ? '+5' : '-5'}
           </Text>
         )}

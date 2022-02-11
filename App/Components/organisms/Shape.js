@@ -7,7 +7,7 @@ export const Shape = ({
 }) => {
   return (
     <View
-      onLayout={e => i < 1 && saveLocation(e)}
+      onLayout={e => saveLocation(e)}
       key={`${shape.name}${shape.id}`} 
       style={[
         style.shapeContainer, 

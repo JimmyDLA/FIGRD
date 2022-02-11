@@ -11,6 +11,7 @@ import {
 import { setGame } from 'App/Redux/modules/home';
 import { connect } from 'react-redux';
 import { style } from './HomeScreen.style';
+import { Button } from '../../Components/molecules/Button'
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 import SplashScreen from 'react-native-splash-screen'
 import Sound from 'react-native-sound';
@@ -93,12 +94,14 @@ class HomeScreen extends React.Component {
             </View> */}
           </View>
           <View style={style.buttonsContainer}>
-            <TouchableOpacity onPress={this.handleSetGame} style={style.button}>
+            {/* <TouchableOpacity onPress={this.handleSetGame} style={style.button}>
               <Text style={style.buttonText}>START</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={this.handleHowToPlay} style={style.button}>
+            </TouchableOpacity> */}
+            <Button label="START" onPress={this.handleSetGame} />
+            <Button label="How To Play" onPress={this.handleHowToPlay} secondary />
+            {/* <TouchableOpacity onPress={this.handleHowToPlay} style={style.button}>
               <Text style={style.buttonText}>How To Play</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             {/* {hapticsType.map(haptic => (
               <TouchableOpacity onPress={() => this.handleHaptic(haptic)} style={style.button}>
                 <Text style={style.buttonText}>{haptic}</Text>

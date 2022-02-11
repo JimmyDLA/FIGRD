@@ -40,7 +40,8 @@ export const style = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 10,
     color: 'white',
-    marginTop: -150
+    marginTop: -150,
+    fontWeight: '900'
   },
   background: {
     flex: 1,

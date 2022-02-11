@@ -60,7 +60,7 @@ class Shape {
   };
 };
 
-export const shuffle = array => {
+export const shuffle = (array, n) => {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...
@@ -76,10 +76,10 @@ export const shuffle = array => {
     array[randomIndex] = temporaryValue;
   }
 
-  return array;
+  return array.slice(0, n);
 }
 
-export const getShapes = () => {
+export const getShapes = (n = 25) => {
   const names = [
     'square', 
     'circle', 
@@ -168,5 +168,5 @@ export const getShapes = () => {
     return item;
   });
 
-  return shuffle(shapesArr);
+  return shuffle(shapesArr, n);
 }

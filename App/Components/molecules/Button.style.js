@@ -22,6 +22,7 @@ export const style = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'silver',
+    borderRadius: 15,
     ...containerDropShadow,
     marginTop: 20,
   },
@@ -32,6 +33,7 @@ export const style = StyleSheet.create({
   label: { 
     fontSize: 16,
     color: 'white',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
 });
