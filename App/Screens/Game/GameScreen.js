@@ -7,9 +7,9 @@ import {
   PanResponder,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { 
-  gameOver, 
-  pauseGame, 
+import {
+  gameOver,
+  pauseGame,
   gameWon,
   gameTime,
   aboutToStart,
@@ -22,10 +22,8 @@ import { style } from './GameScreen.style'
 import { Matrix } from '../../Components/organisms/Matrix';
 import { Selection } from '../../Components/organisms/Selection';
 import { Status } from '../../Components/organisms/Status';
-import Sound from 'react-native-sound';
 import ReactNativeHapticFeedback from "react-native-haptic-feedback";
 
-console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
 console.disableYellowBox = true;
 const options = {
   enableVibrateFallback: true,
@@ -35,7 +33,7 @@ const options = {
 class GameScreen extends React.Component {
 
   point = new Animated.ValueXY();
-  
+
   constructor() {
     super();
     this.state = {
@@ -44,7 +42,7 @@ class GameScreen extends React.Component {
       matrixBorder: 0,
       shapeBorder: 0,
       shapesInfo: [],
-      frozen: true,
+      frozen: false,
       isPowerOn: false,
       powerUpId: null,
       powerupTime: false,
@@ -60,7 +58,7 @@ class GameScreen extends React.Component {
       addTime: null,
       bonus: 0,
     };
-    
+
     this.interval = setInterval(() => {
       this.handleLightUpPowerup();
     }, 5000);
@@ -85,7 +83,7 @@ class GameScreen extends React.Component {
         });
 
         Animated.event([{ x: this.point.x }])({ x: x0 - (width / 2) })
-        Animated.event([{ y: this.point.y }])({ y: y0  - (height / 2)})
+        Animated.event([{ y: this.point.y }])({ y: y0 - (height / 2) })
         // The gesture has started. Show visual feedback so the user knows
         // what is happening!
         // gestureState.d{x,y} will be set to zero now
@@ -132,7 +130,7 @@ class GameScreen extends React.Component {
       if (timeLeft === 0) {
         clearInterval(addPoints);
       } else {
-        this.setState({ score: score + 1 , timeLeft: timeLeft - 1});
+        this.setState({ score: score + 1, timeLeft: timeLeft - 1 });
       }
     }
     const addPoints = setInterval(addOne, 100);
@@ -140,9 +138,9 @@ class GameScreen extends React.Component {
 
   handleRelease = (gestureState) => {
     const { moveX, moveY } = gestureState;
-    const { 
-      shapesInfo, 
-      shapesFound, 
+    const {
+      shapesInfo,
+      shapesFound,
       updateShapesFound,
       shapesInMatrix,
     } = this.props;
@@ -165,9 +163,9 @@ class GameScreen extends React.Component {
       if (shapesFound.length === 24) {
         const { bonus } = this.state;
         const { gameWon, level, score } = this.props;
-        const { seconds } = this.time.current.getTimeLeft();
-        const params = { 
-          score: shapesFound.length + bonus + score + seconds + 1, 
+        const { seconds } = this.time.current.getTimeLeft();
+        const params = {
+          score: shapesFound.length + bonus + score + seconds + 1,
           bonus,
           level: level + 1,
           timeLeft: seconds,
@@ -185,7 +183,7 @@ class GameScreen extends React.Component {
         (moveY >= shape.y + yOffset + matrixBorder) &&
         (moveX <= shape.x + shape.width + matrixBorder) &&
         (moveY <= shape.y + shape.height + yOffset + matrixBorder)
-      ) {      
+      ) {
         if (wildcard) {
           handleShapeFound(grabbedShape);
         } else {
@@ -207,8 +205,8 @@ class GameScreen extends React.Component {
         }
       }
     })
-    
-      this.setState({ isGrabbing: false, grabbedShape: {} });
+
+    this.setState({ isGrabbing: false, grabbedShape: {} });
   }
 
   handleGetShapes = () => {
@@ -232,7 +230,7 @@ class GameScreen extends React.Component {
     clearInterval(this.interval);
     this.setState({ score: 0, isGrabbing: false, bonus: 0 });
     gameOver(true);
-    
+
     setTimeout(() => {
       Vibration.cancel();
     }, 5000);
@@ -240,7 +238,7 @@ class GameScreen extends React.Component {
 
   handlePowerUp = (color, shape) => {
     setTimeout(() => {
-      this.setState({ powerUp: { color: null, square: null }});      
+      this.setState({ powerUp: { color: null, square: null } });
     }, 300);
     clearInterval(this.interval);
     this.interval = null;
@@ -270,14 +268,14 @@ class GameScreen extends React.Component {
     if (color === 'rgb(65,105,225)') {
       this.setState({ isPowerOn: true, frozen: true, sectionColor: 'rgb(65,105,225)' });
       setTimeout(() => {
-        this.setState({ isPowerOn:false, frozen: false, sectionColor: null });
+        this.setState({ isPowerOn: false, frozen: false, sectionColor: null });
       }, 5000);
     }
 
     if (color === 'rgb(102,51,153)') {
 
       const { shapesFound, shapesInMatrix, updateShapesFound } = this.props;
-      const allIdShapes = shapesInMatrix.map( shape => shape.id.toString());
+      const allIdShapes = shapesInMatrix.map(shape => shape.id.toString());
       const availableShapes = allIdShapes.filter(id => !shapesFound.includes(id));
       // take out current shape grabbed
       availableShapes.forEach((element, i) => {
@@ -306,7 +304,7 @@ class GameScreen extends React.Component {
   handleLightUpPowerup = () => {
     const { powerUp } = this.state;
     const { availablePowerupSquares, shapesFound } = this.props;
-    const allIdShapes = availablePowerupSquares.map( shape => shape.id);
+    const allIdShapes = availablePowerupSquares.map(shape => shape.id);
     const availableShapes = allIdShapes.filter(id => !shapesFound.includes(id.toString()));
 
     if (shapesFound.length >= 20) {
@@ -319,29 +317,29 @@ class GameScreen extends React.Component {
       this.setState({ powerUp: newPowerUp });
     } else if (powerUp.square === null) {
       const colors = [
-        // 'rgb(220,20,60)',
+        'rgb(220,20,60)',
         'rgb(65,105,225)',
         'rgb(0,100,0)',
         'rgb(102,51,153)',
         'rgb(255,215,0)',
       ];
 
-      const n = Math.floor(Math.random() * 5);
+      const colorIdx = Math.floor(Math.random() * 5);
       const id = Math.floor(Math.random() * availableShapes.length);
-      const timer = (Math.floor(Math.random() * 5)+ 1) * 1000;
+      const timer = (Math.floor(Math.random() * 5) + 1) * 1000;
       const newPowerUp = {
         square: availableShapes[id].toString(),
-        color: colors[n],
+        color: colors[colorIdx],
       };
-      
+
       this.setState({ powerUp: newPowerUp })
 
-      setTimeout(() => {        
+      setTimeout(() => {
         const newPowerUp = {
           square: null,
           color: null,
         };
-        
+
         this.setState({ powerUp: newPowerUp });
       }, timer);
     } else {
@@ -354,13 +352,13 @@ class GameScreen extends React.Component {
   }
 
   handleLightUpInterval = () => {
-    const { gamePaused, gameEnded, won, shapesFound } = this.props;
-    const isMostShapesFound = shapesFound.length >= 20; 
+    const { gamePaused, gameEnded, won, shapesFound } = this.props;
+    const isMostShapesFound = shapesFound.length >= 20;
 
     if (isMostShapesFound || gamePaused || gameEnded || won) {
       clearInterval(this.interval);
       this.interval = null;
-    } else if(this.interval === null) {
+    } else if (this.interval === null) {
       this.interval = setInterval(() => {
         this.handleLightUpPowerup();
       }, 5000);
@@ -369,8 +367,8 @@ class GameScreen extends React.Component {
 
   saveShapeLocation = e => {
     const { updateShapesInfo, shapesInMatrix } = this.props;
-    const {layout: {x, y, width, height} } = e.nativeEvent;
-    const {style: { borderWidth } } = e._targetInst.memoizedProps
+    const { layout: { x, y, width, height } } = e.nativeEvent;
+    const { style: { borderWidth } } = e._targetInst.memoizedProps
     this.setState({ shapeBorder: borderWidth });
 
     let counter = -1
@@ -381,22 +379,22 @@ class GameScreen extends React.Component {
         counter += 1
       }
 
-        return (
-          { 
-            x: x + (column * width), 
-            y: y + (counter * height), 
-            height,
-            width,
-            ...shape,
-          }
-        );
+      return (
+        {
+          x: x + (column * width),
+          y: y + (counter * height),
+          height,
+          width,
+          ...shape,
+        }
+      );
     });
     updateShapesInfo(newShapesInfo);
   }
 
   saveMatrixBorder = e => {
-    const {layout: { y } } = e.nativeEvent;
-    const {style: {borderWidth}} = e._targetInst.memoizedProps
+    const { layout: { y } } = e.nativeEvent;
+    const { style: { borderWidth } } = e._targetInst.memoizedProps
     this.setState({ matrixBorder: borderWidth, yOffset: y });
   }
 
@@ -404,7 +402,7 @@ class GameScreen extends React.Component {
     this.setState({ powerUpId: e })
   }
 
-  renderShape = ( shape, i, isHidden = false ) => {
+  renderShape = (shape, i, isHidden = false) => {
     const { shapesFound } = this.props;
     const isFound = shapesFound.find(id => id == shape.id);
     if (!isFound && !isHidden) {
@@ -414,22 +412,22 @@ class GameScreen extends React.Component {
           shape={shape}
           style={style.slopHit}
         >
-          <Image 
-            key={`${shape.name}${i}`} 
-            style={style.shapeImg} 
-            source={!isHidden ? shape.activeImg : shape.inactiveImg} 
+          <Image
+            key={`${shape.name}${i}`}
+            style={style.shapeImg}
+            source={!isHidden ? shape.activeImg : shape.inactiveImg}
             shape={shape}
             resizeMode="contain"
           />
         </View>
       )
     }
-    if (isHidden) { 
+    if (isHidden) {
       return (
-        <Image 
-          key={`${shape.name}${i}`} 
-          style={[style.shapeImg]} 
-          source={!isHidden || isFound ? shape.activeImg : shape.inactiveImg} 
+        <Image
+          key={`${shape.name}${i}`}
+          style={[style.shapeImg]}
+          source={!isHidden || isFound ? shape.activeImg : shape.inactiveImg}
           shape={shape}
           resizeMode="contain"
         />
@@ -441,10 +439,10 @@ class GameScreen extends React.Component {
   }
 
   render() {
-    const { 
-      shapesInSelection, 
-      shapesInMatrix, 
-      gamePaused, 
+    const {
+      shapesInSelection,
+      shapesInMatrix,
+      gamePaused,
       timeID,
       level,
       score,
@@ -452,7 +450,7 @@ class GameScreen extends React.Component {
       won,
     } = this.props;
 
-    const { 
+    const {
       grabbedShape,
       sectionColor,
       powerupTime,
@@ -470,26 +468,26 @@ class GameScreen extends React.Component {
           <Animated.View
             style={[
               {
-                ...style.shapeContainer, 
+                ...style.shapeContainer,
                 position: 'absolute',
-                zIndex: 2, 
+                zIndex: 2,
                 top: this.point.y,
                 left: this.point.x,
-                borderWidth: 0, 
+                borderWidth: 0,
               }
             ]}
           >
             {this.renderShape(grabbedShape, grabbedShape.id)}
-          </Animated.View> 
+          </Animated.View>
         )}
 
-        <Status 
+        <Status
           won={won}
           time={time}
           score={score}
           level={level}
           timeID={timeID}
-          isFrozen={true}
+          isFrozen={frozen}
           isAddTime={addTime}
           gamePaused={gamePaused}
           showPowerupTime={powerupTime}
@@ -498,7 +496,7 @@ class GameScreen extends React.Component {
           ref={this.time}
         />
 
-        <Matrix 
+        <Matrix
           square={powerUp.square}
           shapes={shapesInMatrix}
           backgroundColor={powerUp.color}
@@ -520,13 +518,13 @@ class GameScreen extends React.Component {
 }
 
 const mapStateToProps = ({
-  game: { 
+  game: {
     availablePowerupSquares,
     shapesInSelection,
     shapesInMatrix,
     shapesFound,
-    gamePaused, 
-    gameEnded, 
+    gamePaused,
+    gameEnded,
     shapesInfo,
     timeID,
     level,

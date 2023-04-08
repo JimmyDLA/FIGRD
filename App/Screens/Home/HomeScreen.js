@@ -1,10 +1,10 @@
 import React from 'react'
 import {
-  Platform, 
-  Text, 
-  View, 
-  TouchableOpacity, 
-  ActivityIndicator, 
+  Platform,
+  Text,
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
   ImageBackground,
   StatusBar,
 } from 'react-native';
@@ -21,25 +21,25 @@ const options = {
   ignoreAndroidSystemSettings: false
 };
 const hapticsType = [
-  "selection", 
-  "impactLight", 
-  "impactMedium", 
-  "impactHeavy", 
-  "notificationSuccess", 
-  "notificationWarning", 
+  "selection",
+  "impactLight",
+  "impactMedium",
+  "impactHeavy",
+  "notificationSuccess",
+  "notificationWarning",
   "notificationError",
 ];
 
 class HomeScreen extends React.Component {
 
-  track = new Sound('main_track.mp3', Sound.MAIN_BUNDLE, (error) => {
+  track = new Sound('snips.mp3', Sound.MAIN_BUNDLE, (error) => {
     if (error) {
       console.log('failed to load the sound', error);
       return;
     }
     // loaded successfully
     console.log('duration in seconds: ' + this.track.getDuration() + 'number of channels: ' + this.track.getNumberOfChannels());
-  
+
     // Play the sound with an onEnd callback
     this.track.play((success) => {
       if (success) {
@@ -55,7 +55,7 @@ class HomeScreen extends React.Component {
   componentDidMount() {
     SplashScreen.hide();
   }
-  
+
   handleSetGame = () => {
     const { setGame } = this.props;
     // this.track.stop();
@@ -71,7 +71,7 @@ class HomeScreen extends React.Component {
     // "selection", "impactLight", "impactMedium", "impactHeavy", 
     // "notificationSuccess", "notificationWarning", "notificationError"
     ReactNativeHapticFeedback.trigger("impactHeavy", options);
-    
+
     // setInterval(() => {
     //   ReactNativeHapticFeedback.trigger("impactHeavy", options);
     // }, 50);
